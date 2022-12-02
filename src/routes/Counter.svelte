@@ -42,6 +42,7 @@
 		gap: 5vw;
 	}
 	textarea {
+		background-color: darkgray;
 		width: 33vw; 
 		height: 70vh;
 	}
@@ -52,6 +53,7 @@
 
 	button {
 		background-color: black;
+		color: white;
 	}
 
 
