@@ -1,8 +1,21 @@
 <script>
+	import { Configuration, OpenAIApi } from "openai";
 	let value = ""
 	let output = ""
-	function handleSubmit () {
-		output = value
+	async function handleSubmit () {
+		const configuration = new Configuration({
+			organization: "org-Jc3sxfzl7ZxYjl2pggiPd2bE",
+			apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+		});
+		const openai = new OpenAIApi(configuration);
+		const response = await openai.createCompletion({
+			model: "text-davinci-003",
+			prompt: `Correct this to standard English: ${value}`,
+			temperature: 0,
+			max_tokens: 100,
+		})
+		console.log('response', response)
+		output = response.data.choices[0].text?.slice(2)
 	}
 </script>
 
